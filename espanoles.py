@@ -19,17 +19,20 @@ GITHUB_REPO = os.environ.get("GITHUB_REPO")
 
 def subir_a_github(contenido_json):
     try:
+        print(f"🔑 Token: {GITHUB_TOKEN[:10]}...", flush=True)
+        print(f"📁 Repo: {GITHUB_REPO}", flush=True)
         g = Github(GITHUB_TOKEN)
         repo = g.get_repo(GITHUB_REPO)
         contenido = json.dumps(contenido_json, ensure_ascii=False, indent=2)
         try:
             archivo = repo.get_contents(ARCHIVO_DATOS)
             repo.update_file(ARCHIVO_DATOS, "Actualización automática", contenido, archivo.sha)
-        except:
+        except Exception as e2:
+            print(f"⚠️ No existe aún, creando: {e2}", flush=True)
             repo.create_file(ARCHIVO_DATOS, "Crear archivo inicial", contenido)
         print("✅ Subido a GitHub correctamente", flush=True)
     except Exception as e:
-        print(f"❌ Error subiendo a GitHub: {e}", flush=True)
+        print(f"❌ Error subiendo a GitHub: {type(e).__name__}: {e}", flush=True)
 
 def obtener_espanoles():
     espanoles = []
