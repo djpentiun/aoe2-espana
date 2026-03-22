@@ -1,1 +1,1 @@
-worker: python espanoles.py
+worker: python -u espanoles.py
