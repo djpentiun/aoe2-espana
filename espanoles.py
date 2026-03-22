@@ -117,6 +117,7 @@ def mostrar_lista(jugadores, hora):
             cambio_str = "="
         print(f"#{j['rank']:<7} {j['nombre']:<35} {j['elo']:<8} {cambio_str}", flush=True)
 
+
 print("🚀 Script iniciado", flush=True)
 while True:
     espanoles = obtener_espanoles()
