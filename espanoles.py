@@ -102,8 +102,11 @@ def mostrar_lista(jugadores, hora):
             cambio_str = "="
         print(f"#{j['rank']:<7} {j['nombre']:<35} {j['elo']:<8} {cambio_str}")
 
-# Ejecutar ahora
-espanoles = obtener_espanoles()
-jugadores, hora = guardar_actualizacion(espanoles)
-mostrar_lista(jugadores, hora)
-print(f"\nDatos guardados en '{ARCHIVO_DATOS}'")
+# Ejecutar ahora y luego cada hora
+while True:
+    espanoles = obtener_espanoles()
+    jugadores, hora = guardar_actualizacion(espanoles)
+    mostrar_lista(jugadores, hora)
+    print(f"\nDatos guardados en '{ARCHIVO_DATOS}'")
+    print(f"Próxima actualización en 1 hora...")
+    time.sleep(3600)
