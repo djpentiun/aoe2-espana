@@ -76,4 +76,4 @@ def guardar_actualizacion(espanoles):
         with open(ARCHIVO_DATOS, "r", encoding="utf-8") as f:
             guardado = json.load(f)
             for j in guardado.get("jugadores", []):
-                datos_anteriores[j["profile_id"]] = 
+                datos_anteriores[j["profile_id"]] = j["elo"]
